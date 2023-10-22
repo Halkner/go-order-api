@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
+	defer db.Close() // espera tudo rodar e depois executa o close.
 	orderRepository := database.NewOrderRepository(db)
 
 	usecase := use_case.NewCalculateFinalPrice(orderRepository)
